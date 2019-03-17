@@ -4,13 +4,14 @@
 #
 Name     : R-here
 Version  : 0.1
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Summary  : A Simpler Way to Find Your Files
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: R-rprojroot
+Requires: R-backports
+BuildRequires : R-backports
 BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
 
@@ -26,10 +27,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550852277
+export SOURCE_DATE_EPOCH=1552833242
 
 %install
-export SOURCE_DATE_EPOCH=1550852277
+export SOURCE_DATE_EPOCH=1552833242
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -65,8 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library here|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  here || :
 
 
 %files
