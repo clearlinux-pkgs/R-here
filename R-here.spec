@@ -4,13 +4,12 @@
 #
 Name     : R-here
 Version  : 0.1
-Release  : 5
+Release  : 6
 URL      : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Summary  : A Simpler Way to Find Your Files
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: R-backports
 BuildRequires : R-backports
 BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
@@ -27,10 +26,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552833242
+export SOURCE_DATE_EPOCH=1552894753
 
 %install
-export SOURCE_DATE_EPOCH=1552833242
+export SOURCE_DATE_EPOCH=1552894753
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
