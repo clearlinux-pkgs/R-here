@@ -4,7 +4,7 @@
 #
 Name     : R-here
 Version  : 0.1
-Release  : 4
+Release  : 5
 URL      : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Summary  : A Simpler Way to Find Your Files
