@@ -4,19 +4,21 @@
 #
 Name     : R-here
 Version  : 0.1
-Release  : 10
+Release  : 11
 URL      : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Summary  : A Simpler Way to Find Your Files
 Group    : Development/Tools
 License  : GPL-3.0
-BuildRequires : R-backports
+Requires: R-rprojroot
 BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
 
 %description
-here [![Travis-CI Build Status](https://travis-ci.org/krlmlr/here.svg?branch=master)](https://travis-ci.org/krlmlr/here)
-========================================================================================================================
+The 'here()' function uses a reasonable heuristics to find your project's
+    files, based on the current working directory at the time when the package
+    is loaded. Use it as a drop-in replacement for 'file.path()', it will always
+    locate the files relative to your project root.
 
 %prep
 %setup -q -c -n here
@@ -25,13 +27,13 @@ here [![Travis-CI Build Status](https://travis-ci.org/krlmlr/here.svg?branch=mas
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552894753
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569383646
 
 %install
-export SOURCE_DATE_EPOCH=1552894753
+export SOURCE_DATE_EPOCH=1569383646
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -60,12 +62,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  here || :
+R CMD check --no-manual --no-examples --no-codoc here || :
 
 
 %files
