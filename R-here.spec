@@ -4,7 +4,7 @@
 #
 Name     : R-here
 Version  : 0.1
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/here_0.1.tar.gz
 Summary  : A Simpler Way to Find Your Files
@@ -13,29 +13,31 @@ License  : GPL-3.0
 Requires: R-rprojroot
 BuildRequires : R-rprojroot
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-here [![Travis-CI Build Status](https://travis-ci.org/krlmlr/here.svg?branch=master)](https://travis-ci.org/krlmlr/here)
-========================================================================================================================
+The 'here()' function uses a reasonable heuristics to find your project's
+    files, based on the current working directory at the time when the package
+    is loaded. Use it as a drop-in replacement for 'file.path()', it will always
+    locate the files relative to your project root.
 
 %prep
 %setup -q -c -n here
+cd %{_builddir}/here
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571841938
+export SOURCE_DATE_EPOCH=1589578307
 
 %install
-export SOURCE_DATE_EPOCH=1571841938
+export SOURCE_DATE_EPOCH=1589578307
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
